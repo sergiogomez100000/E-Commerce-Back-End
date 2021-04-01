@@ -15,7 +15,8 @@ router.get("/", async (req, res) => {
     // be sure to include its associated Products
     res.json(allCats);
   } catch (err) {
-    console.status(240).console(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -31,7 +32,8 @@ router.get("/:id", async (req, res) => {
     // be sure to include its associated Products
     res.json(oneCat);
   } catch (err) {
-    console.status(240).console(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -41,7 +43,8 @@ router.post("/", async (req, res) => {
     const newCat = await Category.create(req.body);
     res.json(newCat);
   } catch (err) {
-    console.status(240).console(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -50,7 +53,6 @@ router.put("/:id", async (req, res) => {
   try {
     const catData = await Category.update(
       {
-        id: req.body.id,
         category_name: req.body.category_name,
       },
       {
@@ -61,7 +63,8 @@ router.put("/:id", async (req, res) => {
     );
     res.json(catData);
   } catch (err) {
-    console.status(240).console(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -75,7 +78,8 @@ router.delete("/:id", async (req, res) => {
     });
     res.json(catData);
   } catch (err) {
-    console.status(240).console(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
